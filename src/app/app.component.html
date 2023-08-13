@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">List of Task</h1>
+    <!-- ===> {{taskListData | json}} -->
+    <table class="table table-bordered table-hover table-responsive">
+      <thead>
+        <tr>
+          <th>UserId</th>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of taskListData;  let i = index">
+          <td [ngClass]="{'line-through' : task.completed }">{{task.userId}}</td>
+          <td [ngClass]="{'line-through' : task.completed }">{{task.id}}</td>
+          <td [ngClass]="{'line-through' : task.completed }">{{task.title}}</td>
+          <td>
+            <input type="checkbox" [(ngModel)]="checked[i]" [checked]="checked[i]" (change)="task.completed=!task.completed"/>
+            {{ task.completed }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
